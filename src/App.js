@@ -4,11 +4,11 @@ import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import React, { useState } from 'react'
 import Alert from './components/Alert';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light'); // Whether dark mode is enabled or not
@@ -37,22 +37,23 @@ function App() {
       showAlert("Light mode has been enabled", "success");
     }
   }
+  
   return (
     <>
-    {/* <Router> */}
+    <Router>
       <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode}/>
       <Alert alert={alert}/>
       <div className="container my-3">
-      {/* <Switch>
+      <Switch>
         <Route exact path="/about">
-          <About />
+          <About mode={mode}/>
         </Route>
-        <Route exact path="/"> */}
-          <TextForm showAlert={showAlert} heading="Enter the text below to analyze" mode={mode}/>
-        {/* </Route>
-      </Switch> */}
+        <Route exact path="/">
+          <TextForm showAlert={showAlert} heading="Try TextUtils - Word Counter, Character Counter, Remove extra spaces" mode={mode}/>
+        </Route>
+      </Switch>
       </div>
-    {/* </Router> */}
+    </Router>
     </>
   );
 }
